@@ -5,11 +5,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WpfMascaApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MainWindow"
+    Title="FeedPresenter"
     Width="456.67"
     Height="272.379"
     Loaded="Window_Loaded"
-    mc:Ignorable="d">
+    mc:Ignorable="d" 
+    Topmost="True">
     <Grid Cursor="None">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="31*" />
@@ -44,16 +45,14 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Stretch="Fill">
-                <Label x:Name="feedTitle"
-                    Width="450"
-                    Height="40"
-                    Content="{DynamicResource Title}"
+                <TextBlock x:Name="feedTitle"
+                    Text="{DynamicResource Title}"
                     FontFamily="Times New Roman"
-                    FontSize="22">
-                    <Label.Effect>
+                    FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Top" Width="400" TextWrapping="Wrap">
+                    <TextBlock.Effect>
                         <DropShadowEffect BlurRadius="10" Direction="0" />
-                    </Label.Effect>
-                </Label>
+                    </TextBlock.Effect>
+                </TextBlock>
             </Viewbox>
             <Image x:Name="imagethumb"
                 Grid.Row="1"
@@ -70,9 +69,10 @@
                     Width="360"
                     Height="122"
                     Margin="5"
-                    FontStretch="Expanded"
-                    Text="{DynamicResource Content}"
-                    TextWrapping="Wrap">
+                    FontStretch="Expanded" Background="{x:Null}" 
+                    Text="{DynamicResource Content}" 
+                    TextWrapping="Wrap"
+                           >
                     <TextBlock.Effect>
                         <DropShadowEffect BlurRadius="10" Direction="0" />
                     </TextBlock.Effect>
