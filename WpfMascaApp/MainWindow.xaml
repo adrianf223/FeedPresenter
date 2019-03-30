@@ -44,7 +44,7 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Stretch="Fill">
-                <Label
+                <Label x:Name="feedTitle"
                     Width="450"
                     Height="40"
                     Content="{DynamicResource Title}"
@@ -66,7 +66,7 @@
                 Grid.Row="1"
                 Grid.Column="1"
                 Stretch="Fill">
-                <TextBlock
+                <TextBlock x:Name="feedSummary"
                     Width="360"
                     Height="122"
                     Margin="5"

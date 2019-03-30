@@ -16,6 +16,8 @@ using System.Net;
 using System.IO;
 using System.ServiceModel.Syndication;
 using System.Xml;
+using System.Globalization;
+using System.Windows.Markup;
 
 namespace WpfMascaApp
 {
@@ -34,25 +36,30 @@ namespace WpfMascaApp
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            string result = null;
+            //string result = null;
             using (var webClientInstance = new WebClient())
             {
                 webClientInstance.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
 
-                result = webClientInstance.DownloadString(new Uri(theurl));
+                var result = webClientInstance.DownloadData(new Uri(theurl));
+                UTF8Encoding utf8 = new UTF8Encoding();
+                var webdata = utf8.GetString(result);
 
-
-                using (StringReader stringReaderInstance = new StringReader(result.ToString()))
+                using (StringReader stringReaderInstance = new StringReader(webdata.ToString()))
                 {
                     var reader = XmlReader.Create(stringReaderInstance);
                     downloadFeed = SyndicationFeed.Load(reader);
                 }
 
-                var links = downloadFeed.Items.FirstOrDefault().Links;
-                var imgurl = links.Where(link => link.RelationshipType.Contains("enclosure")).FirstOrDefault().Uri;
+                var firstPost = downloadFeed.Items.FirstOrDefault();
+
+                var imgurl = firstPost.Links.FirstOrDefault(link => link.RelationshipType.Contains("enclosure")).Uri;
 
                 imgbackground.Source = new BitmapImage(imgurl);
                 imagethumb.Source = new BitmapImage(imgurl);
+
+                feedTitle.Content = firstPost.Title.Text;                    
+                feedSummary.Text =  firstPost.Summary.Text;
             }
 
         }
