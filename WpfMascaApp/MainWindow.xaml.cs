@@ -25,6 +25,7 @@ namespace WpfMascaApp
     public partial class MainWindow : Window
     {
         string theurl = "https://www.stiridecluj.ro/rss.xml";
+        SyndicationFeed downloadFeed;
 
         public MainWindow()
         {
@@ -44,8 +45,14 @@ namespace WpfMascaApp
                 using (StringReader stringReaderInstance = new StringReader(result.ToString()))
                 {
                     var reader = XmlReader.Create(stringReaderInstance);
-                    var downloadFeed = SyndicationFeed.Load(reader);
+                    downloadFeed = SyndicationFeed.Load(reader);
                 }
+
+                var links = downloadFeed.Items.FirstOrDefault().Links;
+                var imgurl = links.Where(link => link.RelationshipType.Contains("enclosure")).FirstOrDefault().Uri;
+
+                imgbackground.Source = new BitmapImage(imgurl);
+                imagethumb.Source = new BitmapImage(imgurl);
             }
 
         }

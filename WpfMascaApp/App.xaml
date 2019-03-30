@@ -15,6 +15,6 @@
         <BitmapImage x:Key="Image" 
                      CreateOptions="IgnoreImageCache" 
                      CacheOption="OnLoad" 
-                     UriSource="c:\Temp\image1.png"/>
+                     UriSource="c:\Temp\image2.jpg"/>
     </Application.Resources>
 </Application>
