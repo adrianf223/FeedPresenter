@@ -8,18 +8,28 @@
     Title="MainWindow"
     Width="456.67"
     Height="272.379"
+    Loaded="Window_Loaded"
     mc:Ignorable="d">
     <Grid Cursor="None">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="31*" />
+            <ColumnDefinition Width="59*" />
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
         <Image
             Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            Margin="0,0,0.4,0.4"
             OpacityMask="#AA000000"
             Source="{DynamicResource Image}"
-            Stretch="UniformToFill" /> 
-        <Grid Grid.Row="1" Grid.RowSpan="2" Margin="5">
+            Stretch="UniformToFill" />
+        <Grid
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Margin="5,5.2,5.4,5.4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="3*" />
@@ -48,9 +58,9 @@
                 Grid.Row="1"
                 Grid.RowSpan="1"
                 Grid.ColumnSpan="1"
-                Source="{DynamicResource Image}" 
-                VerticalAlignment="Top" 
-                Margin="5" />
+                Margin="5"
+                VerticalAlignment="Top"
+                Source="{DynamicResource Image}" />
             <Viewbox
                 Grid.Row="1"
                 Grid.Column="1"
@@ -58,13 +68,12 @@
                 <TextBlock
                     Width="360"
                     Height="122"
+                    Margin="5"
                     FontStretch="Expanded"
                     Text="{DynamicResource Content}"
-                    TextWrapping="Wrap" 
-                    Margin="5">
+                    TextWrapping="Wrap">
                     <TextBlock.Effect>
-                        <DropShadowEffect BlurRadius="10" 
-                            Direction="0" />
+                        <DropShadowEffect BlurRadius="10" Direction="0" />
                     </TextBlock.Effect>
                 </TextBlock>
             </Viewbox>
