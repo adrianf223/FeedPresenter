@@ -1,9 +1,9 @@
 ﻿<Application
-    x:Class="WpfMascaApp.App"
+    x:Class="FeedPresenter.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:System="clr-namespace:System;assembly=mscorlib"
-    xmlns:local="clr-namespace:WpfMascaApp"
+    xmlns:local="clr-namespace:FeedPresenter"
     StartupUri="MainWindow.xaml">
     <Application.Resources>
 

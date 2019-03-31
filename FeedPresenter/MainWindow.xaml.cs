@@ -9,7 +9,7 @@ using System.ServiceModel.Syndication;
 using System.Xml;
 using System.Text.RegularExpressions;
 
-namespace WpfMascaApp
+namespace FeedPresenter
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -52,14 +52,6 @@ namespace WpfMascaApp
                 }
 
                 feedTitle.Text = firstPost.Title.Text;
-
-                //var webtext =  firstPost.Summary.Text;
-
-                //var writer = new StringWriter();
-                //WebUtility.HtmlEncode(webtext, writer);
-
-                //feedSummary.Text =  writer.ToString(); 
-                //feedSummary.Selection.Text = WebUtility.HtmlEncode(firstPost.Summary.Text);
                 feedSummary.Text = HtmlToPlainText( firstPost.Summary.Text );
             }
 
