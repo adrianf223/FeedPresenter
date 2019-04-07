@@ -4,19 +4,26 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:local="clr-namespace:FeedPresenter"
-    StartupUri="MainWindow.xaml">
+    StartupUri="MainWindow.xaml"
+    >
     <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
 
-        <System:String x:Key="Title">
-            What are Stock Photos?
-        </System:String>
-        <System:String x:Key="Content">
-            A stock photo is a photo purchased from a photo library for use in a graphic design, publication, website or other publication or reproduction. The photo library is usually an online service that maintains a searchable inventory of photos on a variety of topics and subjects. Stock photos save time and cost compared to a custom photo, so they are...
-        </System:String>
-        <BitmapImage
-            x:Key="Image"
-            CacheOption="OnLoad"
-            CreateOptions="IgnoreImageCache"
-            UriSource="c:\Temp\image2.jpg" />
+            <System:String x:Key="Title">
+                What are Stock Photos?
+            </System:String>
+            <System:String x:Key="Content">
+                A stock photo is a photo purchased from a photo library for use in a graphic design, publication, website or other publication or reproduction. The photo library is usually an online service that maintains a searchable inventory of photos on a variety of topics and subjects. Stock photos save time and cost compared to a custom photo, so they are...
+            </System:String>
+            <BitmapImage
+                x:Key="Image"
+                CacheOption="OnLoad"
+                CreateOptions="IgnoreImageCache"
+                UriSource="c:\Temp\image2.jpg"
+                />
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
