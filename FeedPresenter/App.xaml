@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:local="clr-namespace:FeedPresenter"
-    StartupUri="MainWindow.xaml"
+    StartupUri="FeedPresenterWindow.xaml"
     >
     <Application.Resources>
         <ResourceDictionary>

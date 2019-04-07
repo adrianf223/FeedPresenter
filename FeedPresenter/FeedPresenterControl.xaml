@@ -1,17 +1,15 @@
-﻿<Window
-    x:Class="FeedPresenter.MainWindow"
+﻿<UserControl
+    x:Class="FeedPresenter.FeedPresenterControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:FeedPresenter"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="FeedPresenter"
-    Width="456.67"
-    Height="272.379"
-    Loaded="Window_Loaded"
-    Topmost="True"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
     mc:Ignorable="d"
     >
+
     <Grid Cursor="None">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="31*" />
@@ -25,8 +23,8 @@
             x:Name="imgbackground"
             Grid.RowSpan="2"
             Grid.ColumnSpan="2"
-            Source="{DynamicResource Image}"
             Style="{StaticResource backgroundimage}"
+            Source="{Binding ImageBackground, UpdateSourceTrigger=PropertyChanged}"
             />
         <Grid
             Grid.Row="1"
@@ -50,7 +48,8 @@
                 <TextBlock
                     x:Name="feedTitle"
                     Style="{StaticResource feedtitle}"
-                    Text="{DynamicResource Title}"
+                    Text="{Binding FeedTitle, UpdateSourceTrigger=PropertyChanged}"
+
                     >
                     <TextBlock.Effect>
                         <DropShadowEffect BlurRadius="10" Direction="0" />
@@ -62,7 +61,7 @@
                 Grid.Row="1"
                 Grid.RowSpan="1"
                 Grid.ColumnSpan="1"
-                Source="{DynamicResource Image}"
+                Source="{Binding ImageThumb, UpdateSourceTrigger=PropertyChanged}"
                 Style="{StaticResource imagethumb}"
                 />
             <Viewbox
@@ -73,7 +72,7 @@
                 <TextBlock
                     x:Name="feedSummary"
                     Style="{StaticResource feedSumary}"
-                    Text="{DynamicResource Content}"
+                    Text="{Binding FeedSummary, UpdateSourceTrigger=PropertyChanged}"
                     >
                     <TextBlock.Effect>
                         <DropShadowEffect BlurRadius="10" Direction="0" />
@@ -82,4 +81,4 @@
             </Viewbox>
         </Grid>
     </Grid>
-</Window>
+</UserControl>

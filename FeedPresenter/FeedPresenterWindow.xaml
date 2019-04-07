@@ -1,0 +1,22 @@
+﻿<Window
+    x:Class="FeedPresenter.FeedPresenterWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:FeedPresenter"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="FeedPresenter"
+    Width="456.67"
+    Height="272.379"
+    local:FeedPresenterBindings.LoadedAction="{Binding LoadAction}"
+    local:FeedPresenterBindings.LoadedEnabled="True"
+    Topmost="True"
+    mc:Ignorable="d"
+    >
+
+    <Window.DataContext>
+        <local:FeedPresenterViewModel />
+    </Window.DataContext>
+
+    <local:FeedPresenterControl />
+</Window>
