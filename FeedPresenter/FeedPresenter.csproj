@@ -73,6 +73,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Services\FeedDownloader.cs" />
+    <Compile Include="Services\IFeedDownloader.cs" />
+    <Compile Include="Services\IFeedItemContentSelector.cs" />
     <Page Include="FeedPresenterControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -91,7 +94,6 @@
     <Compile Include="FeedPresenterControl.xaml.cs">
       <DependentUpon>FeedPresenterControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FeedPresenterDownloader.cs" />
     <Compile Include="FeedPresenterHelper.cs" />
     <Compile Include="FeedPresenterLoadedAction.cs" />
     <Compile Include="FeedPresenterModel.cs" />
@@ -106,7 +108,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IFeedPresenterDownloader.cs" />
+    <Compile Include="Services\FeedItemContentSelector.cs" />
     <Compile Include="IFeedPresenterLoadedAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
