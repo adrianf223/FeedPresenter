@@ -10,7 +10,6 @@
     Height="272.379"
     local:FeedPresenterBindings.LoadedAction="{Binding LoadAction}"
     local:FeedPresenterBindings.LoadedEnabled="True"
-    Topmost="True"
     mc:Ignorable="d"
     >
 
