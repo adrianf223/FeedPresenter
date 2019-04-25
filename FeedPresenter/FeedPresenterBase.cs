@@ -1,6 +1,8 @@
 ﻿using FeedPresenter.Services;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace FeedPresenter
 {
@@ -12,10 +14,23 @@ namespace FeedPresenter
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void ThisPropertyIsChanged(string property)
+        private void ThisPropertyIsChanged(string property)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
-        }  
+        }
+
+        protected bool Set<T>(ref T field, T value, [CallerMemberName] string member = null)
+        {
+            if (Equals(field, value))
+            {
+                return false;
+            }
+
+            field = value;
+            ThisPropertyIsChanged(member);
+            return true;
+        }
+
 
         protected FeedPresenterBase()
         {

@@ -1,7 +1,7 @@
 ﻿using FeedPresenter.Services;
 using System;
 using System.Windows.Media.Imaging;
-
+                             
 namespace FeedPresenter
 {
     public class FeedPresenterViewModel : FeedPresenterBase
@@ -24,42 +24,26 @@ namespace FeedPresenter
 
         public BitmapImage ImageBackground
         {
-            get { return _imageBackground; }
-            set
-            {
-                _imageBackground = value;
-                ThisPropertyIsChanged(nameof(ImageBackground));
-            }
+            get => _imageBackground;
+            set =>  Set<BitmapImage>(ref _imageBackground, value);
         }
 
         public BitmapImage ImageThumb
         {
-            get { return _imageThumb; }
-            set
-            {
-                _imageThumb = value;
-                ThisPropertyIsChanged(nameof(ImageThumb));
-            }
+            get => _imageThumb;
+            set => Set<BitmapImage>(ref _imageThumb, value);
         }
 
         public String FeedTitle
         {
-            get { return _feedTitle; }
-            set
-            {
-                _feedTitle = value;
-                ThisPropertyIsChanged(nameof(FeedTitle));
-            }
+            get => _feedTitle;
+            set => Set<string>(ref _feedTitle, value);
         }
 
         public String FeedSummary
         {
-            get { return _feedSummary; }
-            set
-            {
-                _feedSummary = value;
-                ThisPropertyIsChanged(nameof(FeedSummary));
-            }
+            get => _feedSummary;
+            set => Set<string>(ref _feedSummary, value);
         }
 
         public FeedPresenterLoadedAction LoadAction => _loadAction ?? (
