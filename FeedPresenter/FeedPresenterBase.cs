@@ -1,6 +1,4 @@
-﻿using FeedPresenter.Services;
-using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -35,8 +33,8 @@ namespace FeedPresenter
         protected FeedPresenterBase()
         {
             _services = new ServiceCollection();                       
-            _services.AddSingleton<IFeedDownloader>(new FeedDownloader());
-            _services.AddSingleton<IFeedItemContentSelector>(new FeedItemContentSelector());
+            _services.AddSingleton<IFeedPresenterDownloader>(new FeedPresenterDownloader());
+            _services.AddSingleton<IFeedPresenterItem>(new FeedPresenterItem());
 
 
             FeedServiceProvider = _services.BuildServiceProvider();

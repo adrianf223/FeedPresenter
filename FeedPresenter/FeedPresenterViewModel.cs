@@ -1,13 +1,13 @@
-﻿using FeedPresenter.Services;
-using System;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
                              
 namespace FeedPresenter
 {
     public class FeedPresenterViewModel : FeedPresenterBase
     {
-        public IFeedDownloader Downloader { get; }
-        public IFeedItemContentSelector FeedItemContent { get; }
+        public IFeedPresenterDownloader Downloader { get; }
+        public IFeedPresenterItem FeedItem { get; }
 
         private BitmapImage _imageBackground;
         private BitmapImage _imageThumb;
@@ -18,8 +18,8 @@ namespace FeedPresenter
 
         public FeedPresenterViewModel()
         {
-            Downloader = (IFeedDownloader)FeedServiceProvider.GetService(typeof(IFeedDownloader));
-            FeedItemContent = (IFeedItemContentSelector)FeedServiceProvider.GetService(typeof(IFeedItemContentSelector));
+            Downloader = (IFeedPresenterDownloader)FeedServiceProvider.GetService(typeof(IFeedPresenterDownloader));
+            FeedItem = (IFeedPresenterItem)FeedServiceProvider.GetService(typeof(IFeedPresenterItem));
         }
 
         public BitmapImage ImageBackground
@@ -51,16 +51,23 @@ namespace FeedPresenter
             );
 
 
-        private Action OnLoadAction() => () => UpdateFeedDisplay();
-
-        public void UpdateFeedDisplay()
+        private Action OnLoadAction()
         {
-            FeedTitle = FeedItemContent.GetTitlePlainText(Downloader.FirstPost);
-            FeedSummary = FeedItemContent.GetSummaryPlainText(Downloader.FirstPost);
+            return async () => await UpdateFeedDisplay();
+        }
+
+        public async Task UpdateFeedDisplay()
+        {
+
+            var first = await Downloader.GetFirstPostAsync();
+            FeedItem.Load(first);
+
+            FeedTitle = FeedItem.FeedTitle;
+            FeedSummary = FeedItem.FeedSummary;
               
-            if (FeedItemContent.PostHasImage(Downloader.FirstPost))
+            if (FeedItem.HasImage)
             {
-                ImageBackground = ImageThumb = FeedItemContent.GetPostImage(Downloader.FirstPost);
+                ImageBackground = ImageThumb = FeedItem.Image;
             }
         }
     }
